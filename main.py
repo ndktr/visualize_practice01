@@ -26,7 +26,9 @@ def show_scatter(profiles) -> None:
         names.append(profile['name'])
         ages.append(profile['age'])
         years.append(profile['years'])
-
+    
+    plt.rcParams['font.family'] = 'Meiryo'
+    plt.figure(figsize=(15, 8))
     plt.scatter(ages, years)
 
     for i, name in enumerate(names):
