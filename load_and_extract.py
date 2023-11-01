@@ -14,7 +14,7 @@ class HtmlParser:
             return html_doc
 
 
-class GeininHtmlParser(HtmlParser):
+class ComedianHtmlParser(HtmlParser):
     def __init__(self, path_to_html: str) -> None:
         super().__init__(path_to_html)
 
@@ -58,13 +58,3 @@ class GeininHtmlParser(HtmlParser):
         matched = re.search(pattern, text)
         text_inside_parentheses = matched.group(1) if matched else 'no'
         return text_inside_parentheses
-
-
-def main() -> None:
-    geinin_html_parser = GeininHtmlParser('./profiles.html')
-    profiles = geinin_html_parser.extract_profiles_from_html_doc()
-    print(profiles)
-
-
-if __name__ == '__main__':
-    main()
