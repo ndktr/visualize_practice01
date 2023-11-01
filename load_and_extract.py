@@ -1,4 +1,3 @@
-import json
 import re
 
 from bs4 import BeautifulSoup
@@ -60,16 +59,11 @@ class GeininHtmlParser(HtmlParser):
         text_inside_parentheses = matched.group(1) if matched else 'no'
         return text_inside_parentheses
 
-    def save_profiles_as_json(self, profiles: list[dict[str, str]]) -> None:
-        save_data = {'list': profiles}
-        with open('./output/profiles.json', 'w', encoding="utf-8") as json_file:
-            json.dump(save_data, json_file, ensure_ascii=False)
-
 
 def main() -> None:
-    geinin_html_parser = GeininHtmlParser('./input/profiles.html')
+    geinin_html_parser = GeininHtmlParser('./profiles.html')
     profiles = geinin_html_parser.extract_profiles_from_html_doc()
-    geinin_html_parser.save_profiles_as_json(profiles)
+    print(profiles)
 
 
 if __name__ == '__main__':
